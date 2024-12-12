@@ -12,6 +12,8 @@ def insertion(m,n,i,j):
     m = m & bitMask
     res = m|n
     return res
+
+#dgk
      
 
 def main():
