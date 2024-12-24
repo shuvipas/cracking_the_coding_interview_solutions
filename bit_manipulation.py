@@ -13,7 +13,7 @@ def insertion(m,n,i,j):
     res = m|n
     return res
 
-#dgk
+
      
 
 def main():

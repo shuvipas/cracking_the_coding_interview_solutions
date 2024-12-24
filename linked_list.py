@@ -243,6 +243,62 @@ def test_palindrome():
 # node of the first linked list is the exact same node (by reference) as the jth node of the second
 # linked list, then they are intersecting.
 
+def intersection_same_length( h1,h2):
+    curr1,curr2 = h1,h2
+    while curr1 and curr2:
+        if curr1 is curr2:
+            return curr1
+        curr1 = curr1.next
+        curr2 = curr2.next
+    return False
+
+def intersection( h1,h2):
+    #using set O(n) space
+    """
+    set1 = set()
+    curr = h1
+    while curr:
+        set1.add(curr)
+        curr= curr.next
+    curr = h2
+    while curr:
+        if curr in set1: # i need to check if it is not only ==
+            if 
+            return curr
+        curr= curr.next
+    return False
+    """
+    len1 = 1
+    tail1 =None
+    curr1 = h1
+    while curr1.next:
+        curr1= curr1.next
+        len1 +=1
+    tail1 = curr1
+    
+    len2 = 1
+    tail2 =None
+    
+    curr2 = h2
+    while curr2.next:
+        curr2= curr.next
+        len2 +=1
+    tail2 = curr2
+    if tail1!= tail2:
+        return false
+    curr1 =h1
+    curr2 =h2
+    if len1 > len2:
+        for i in range(len1-len2):
+            curr1 = curr1.next
+    else:
+        for i in range(len2-len1):
+            curr2 = curr2.next
+    return intersection_same_length(curr1,curr2)
+
+
+
+
 # 2.8 Loop Detection: Given a circular linked list, implement an algorithm that returns the node at the
 # beginning of the loop.
 # DEFINITION
@@ -255,6 +311,7 @@ def test_palindrome():
 
 
 def main():
+
     # test_removeDuplicates()
     # test_delMiddle()
     # test_delMiddle()
