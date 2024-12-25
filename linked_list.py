@@ -307,9 +307,23 @@ def intersection( h1,h2):
 # EXAMPLE
 # Input:A -> B -> C -> o -> E - > C [the same 'C' as earlier]
 # Output:C
-
-
-
+def loop_detection(head):
+    slower = head
+    faster = head
+    while faster:
+        slower = slower.next
+        faster = faster.next.next
+        if faster is slower:
+            break
+    if not faster:
+        return None
+    slower = head
+    while faster != slower:
+        slower = slower.next
+        faster = faster.next
+    return faster
+    
+    
 def main():
 
     # test_removeDuplicates()
