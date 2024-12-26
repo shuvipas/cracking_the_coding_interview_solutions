@@ -63,8 +63,28 @@ def test_myfifo():
         print("peek: ",queue.peek())
         queue.remove()        
 
-# 3.1 Three in One: Describe how you could use a single array to implement three stacks.
-
+# 3.3 Stack of Plates: Imagine a (literal) stack of plates. If the stack gets too high, it might topple.
+# Therefore, in real life, we would likely start a new stack when the previous stack exceeds some
+# threshold. Implement a data structure SetOfStacks that mimics this. SetOfStacks should be
+# composed of several stacks and should create a new stack once the previous one exceeds capacity.
+# SetOfStacks. push () and SetOfStacks. pop () should behave identically to a single stack
+# (that is , pop ( ) should return the same values as it would if there were just a single stack).
+# FOLLOW UP
+# Implement a function popAt (int index) which performs a pop operation on a specific sub-stack 
+class SetOfStacks:
+    def __init__(self, limit=3):
+        self.limit = limit
+        self._ptr=0
+        self._stacks_len = [0]
+        self._stacks= [MyLIFO()]
+    def push(item):
+        if self._stacks_len[self._ptr] < self.limit -1:
+            _stacks[self._ptr].push(item)
+            self._stacks_len[self._ptr] +=1
+            
+        pass
+    def pop():
+        pass
 
 
 def main():
