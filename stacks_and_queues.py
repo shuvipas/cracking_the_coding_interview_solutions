@@ -154,6 +154,26 @@ class MyQueue:
 # 3.5 Sort Stack: Write a program to sort a stack such that the smallest items are on the top. You can use
 # an additional temporary stack, but you may not copy the elements into any other data structure
 # (such as an array) . The stack supports the following operations: push , pop, peek , and isEmpty .
+def stack_sort(st):
+
+    helper = MyFIFO()
+    
+    #loop on all st elements
+    while not st.isEmpty():
+        temp = st.pop()
+        while not helper.isEmpty() or temp < helper.peek():
+            st.push(helper.pop())
+        helper.push(temp)
+    while not helper.isEmpty():
+        st.push(helper.pop())
+    return st 
+ 
+# 3.6 Animal Shelter: An animal shelter, which holds only dogs and cats, operates on a strictly "first in, first
+# out " basis. People must adopt either the "oldest" (based on arrival time) of all animals at the shelter,
+# or the y can select whether they would prefer a dog or a cat (and will receive the oldest animal of
+# that type). They cannot select which specific animal they would like. Create the data structures to
+# maint ai n this system and implement operations such as enqueue, dequeueAny, dequeueDog,
+# and dequeueCat. You may use the built- in LinkedList data structure.
 
 
 def main():
