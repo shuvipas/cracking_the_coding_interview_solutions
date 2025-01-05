@@ -77,17 +77,87 @@ class SetOfStacks:
         self._ptr=0
         self._stacks_len = [0]
         self._stacks= [MyLIFO()]
-    def push(item):
-        if self._stacks_len[self._ptr] < self.limit -1:
-            _stacks[self._ptr].push(item)
-            self._stacks_len[self._ptr] +=1
+    def isEmpty(self):
+        pass
+    def push(self,item):
+        if self._stacks_len[self._ptr] == self.limit:
+            self._stacks.append(MyLIFO())
+            self._stacks_len.append(0)
+            self._ptr +=1
+
+        self._stacks[self._ptr].push(item)
+        self._stacks_len[self._ptr] +=1
+
+    def pop(self):
+        while self._ptr >=0 and self._stacks_len[self._ptr] == 0:
+            if self._ptr ==0:
+                return None
+            self._stacks_len.pop()
+            self._stacks.pop()
+            self._ptr -=1
             
+        self._stacks_len[self._ptr] -=1
+        
+        return self._stacks[self._ptr].pop()
+    def popAt(self,index):
+        if index<0 or index >= len(self._stacks) or self._stacks_len[index] == 0:
+            return None
+        self._stacks_len[index] -=1
+        
+        return self._stacks[index].pop()
+            
+def test_set_of_stacks():
+    stacks = SetOfStacks(limit=3)
+    for i in range(10):  
+        stacks.push(i)
+    
+    print("Popped:", stacks.pop())  # Should return 9
+    print("Popped at index 1:", stacks.popAt(1))  # Should return 5 (from second stack)
+    print("Popped at index 0:", stacks.popAt(0))  # Should return 2
+    while stacks._ptr >= 0:  # Pop until empty
+        popped = stacks.pop()
+        if popped ==None:
+            break
+        print("Popped:", popped )
+# 3.4 Queue via Stacks: Implement a MyQueue class which implements a queue using two stacks.
+
+class MyQueue:
+    def __init__(self):
+        self._pop_stack = MyLIFO()     
+        self._add_stack = MyLIFO()
+
+    def _transfer_items2pop(self):
+        while not self._add_stack.isEmpty():
+            self._pop_stack.push(self._pop_stack.pop()) 
+
+    def add(self,item):
+        self._add_stack.push(item)
+    def remove(self):
+        if self.isEmpty():
+            return None
+        if self._pop_stack.isEmpty():
+            #transfer all elements from second stack
+            self._transfer_items2pop()
+        self._pop_stack.push()        
+    def peek(self):
+        if self.isEmpty():
+            return None
+        if self._pop_stack.isEmpty():
+            self._transfer_items2pop()
+        self._pop_stack.peek()
+
         pass
-    def pop():
-        pass
+    def isEmpty(self):
+        if self._pop_stack.isEmpty() and self._add_stack.isEmpty():
+            return True
+        return False
+# 3.5 Sort Stack: Write a program to sort a stack such that the smallest items are on the top. You can use
+# an additional temporary stack, but you may not copy the elements into any other data structure
+# (such as an array) . The stack supports the following operations: push , pop, peek , and isEmpty .
 
 
 def main():
+    test_set_of_stacks()
     #test_mylifo()
     #test_myfifo()
     pass
