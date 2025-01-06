@@ -1,7 +1,10 @@
 class Node:
-    def _init__(self, val, children=None):
+    def _init__(self, val, children=[None,None]):
         self.val = val
         self.children = children
+
+
+    
 def in_order_traversal(node):
     if not node:
         in_order_traversal(node.children[0])
