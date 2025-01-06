@@ -40,6 +40,8 @@ class MyFIFO:
     
     def remove(self):
         self.items.pop(0)
+    def pop(self):
+        return self.items.pop(0)
     
     def peek(self):
         if self.isEmpty():
@@ -174,6 +176,41 @@ def stack_sort(st):
 # that type). They cannot select which specific animal they would like. Create the data structures to
 # maint ai n this system and implement operations such as enqueue, dequeueAny, dequeueDog,
 # and dequeueCat. You may use the built- in LinkedList data structure.
+class Animal:
+    def __init__(self,name,kind):
+        self.name =name
+        self.kind = kind #dog =1, cat =0
+
+class AnimalQueue:
+    def __init__(self):
+        self._allQueue = MyFIFO() #true  for dogs false for cats
+        self._catQueue = MyFIFO()
+        self._dogQueue = MyFIFO()
+    def enqueue(self,animal):
+        self._allQueue.add(animal)
+        
+    def dequeueAny(self):
+        return self._allQueue.pop()
+        
+    def dequeueKind(self,kind):
+        templifo = MyLIFO()
+        curr = self.dequeueAny()
+        while curr.kind != kind:
+            if curr == None:
+                break
+            tempLifo.push(curr)
+        temp = templifo.pop()
+        while temp:
+            self.enqueue(temp)
+        return curr
+
+    def dequeueDog(self):
+        return dequeueKind(self,1)
+        
+    def dequeueCat(self):
+        return dequeueKind(self,0)
+        
+
 
 
 def main():
