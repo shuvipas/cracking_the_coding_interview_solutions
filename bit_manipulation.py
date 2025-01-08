@@ -38,15 +38,21 @@ def insertion(m,n,i,j):
 # most 32 characters, print "ERROR:
 
 def bin2string(num):
+    strBin = ""
     for i in range(32):
-        if int(num) != num:
+        if int(num) == num:
             break
         num *=2
+        val = 0
+        if num >1:
+            val = 1
+            num -=1
+        strBin.append(val)
 
 if int(num) != num:
     print("ERROR")
 else:
-    print(bin(num))
+    print(strBin)
 
 # 5.3 Flip Bit to Win: You have an integer and you can flip exactly one bit from a 0 to a 1. Write code to
 # find the length of the longest sequence of 1 s you could create.
