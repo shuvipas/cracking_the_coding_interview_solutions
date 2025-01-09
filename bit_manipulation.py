@@ -101,8 +101,22 @@ def conversion(a,b):
     num = a^b
     return numOfOnes(num)
 
-# 5.7 Pairwise Swap: Write a program to swap odd and even bits in an integer with as few instructions as
-# possible (e.g ., bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, and so on)
+# 5.7 Pairwise Swap: Write a program to swap odd and even bits in
+#  an integer with as few instructions as possible 
+# (e.g ., bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, and so on)
+def pairSwipe(num):
+    evenMask = int('0xaaaaaaa', 16) #bin(int('0xaaaaaaa', 16)) '0b1010101010101010101010101010'
+    oddMask = int('0x5555555', 16)
+    odd = (num>>1)&oddMask
+    even = (num<<1)&evenMask
+    return odd|even
+
+# 5.8 Draw Line: A monochrome screen is stored as a single array of bytes, allowing eight consecutive
+# pixels to be stored in one byte. The screen has width w, where w is divisible by 8 (that is , no byte will
+# be spl it across rows) . The height of the screen, ofcourse, can be derived from the length of the array
+# and the width . Implement a function that draws a horizontal line from (xl, y) to (x2, y).
+# The method signature should look something like :
+# drawL i ne(byte[] screen, int width, int Xl , int x2 , int y)
 
 
 def main():
