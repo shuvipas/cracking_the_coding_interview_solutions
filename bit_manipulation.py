@@ -16,6 +16,19 @@ def clearBitsFromZero2I(num, i):
 def updateBit(num, i,val): #val == 1,0
     mask = ~(1<<i)
     return (num&mask)|val<<i
+def numOfOnes(num):
+    count =0
+    while num:# !=0
+        """
+        time as the number of bits
+        count += num&1
+        num >>=1 """
+        # Brian Kernighan’s Algorithm: 
+        # time as the number of ones
+        num = (num&(num-1)) # clearing the lowest 1' bit
+        count +=1
+    return count
+
 
 #5.1
 # Insertion: You are given two 32-bit numbers, N and M, and two bit positions, i and
@@ -59,6 +72,37 @@ else:
 # EXAMPLE
 # Input: 1775 (or: 11011101111)
 # Output: 8
+def flipBit(num):
+    longest = 0
+    posi = 0
+    pre= 0 #first contur
+    curr = 0
+    
+    strNum = str(bin(num))[2:]
+    for i in range(strNum):
+        if strNum[i] =='1':
+            curr+=1
+        else:
+            if pre +1 >longest:
+                posi = i
+                longest = pre +1
+
+
+# 5.4 Next Number: Given a positive integer, print the next smallest and the next largest number that
+# have the same number of 1 bits in their binary representation  
+
+# 5.6 Conversion: Write a function to determine the number of bits you would need to flip to convert
+# integer A to integer B.
+# EXAMPLE
+# Input: 29 (or: 11101), 15 (or: 01111)
+# Output: 2
+
+def conversion(a,b):
+    num = a^b
+    return numOfOnes(num)
+
+# 5.7 Pairwise Swap: Write a program to swap odd and even bits in an integer with as few instructions as
+# possible (e.g ., bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, and so on)
 
 
 def main():
