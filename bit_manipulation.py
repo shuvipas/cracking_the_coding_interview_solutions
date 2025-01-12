@@ -91,6 +91,7 @@ def flipBit(num):
 # 5.4 Next Number: Given a positive integer, print the next smallest and the next largest number that
 # have the same number of 1 bits in their binary representation 
 def nextNum(num): 
+    pass
 
 # 5.6 Conversion: Write a function to determine the number of bits you would need to flip to convert
 # integer A to integer B.
@@ -106,8 +107,10 @@ def conversion(a,b):
 #  an integer with as few instructions as possible 
 # (e.g ., bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, and so on)
 def pairSwipe(num):
-    evenMask = int('0xaaaaaaa', 16) #bin(int('0xaaaaaaa', 16)) '0b1010101010101010101010101010'
-    oddMask = int('0x5555555', 16)
+    aStr = '0x'+'a'*16 #for a 64 bit number
+    fiveStr = '0x'+'5'*16
+    evenMask = int(aStr, 16) #bin(int('0xaaaaaaa', 16)) '0b1010101010101010101010101010'
+    oddMask = int(fiveStr, 16)
     odd = (num>>1)&oddMask
     even = (num<<1)&evenMask
     return odd|even
