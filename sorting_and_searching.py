@@ -10,12 +10,12 @@ def bubbleSort(arr):
                 arr[j],arr[j+1]=arr[j+1],arr[j]
                 swapped= True
             print(arr)
-        if swapped== True:
+        if swapped== False:
             return arr
     return arr
 def test_bubbleSort():
     randArr = [random.randint(-10, 10) for _ in range(10)]
-    print(bubbleSort(randArr))
+    bubbleSort(randArr)
 
 
 
