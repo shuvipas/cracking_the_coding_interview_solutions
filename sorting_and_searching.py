@@ -1,4 +1,7 @@
 import random
+def swap(arr,a,b):
+    arr[a],arr[b] = arr[b],arr[a]
+
 def bubbleSort(arr):
     if len(arr)<2:
         return arr
@@ -7,7 +10,7 @@ def bubbleSort(arr):
         swapped= False
         for j in range(len(arr)-i-1):
             if arr[j]>arr[j+1]:
-                arr[j],arr[j+1]=arr[j+1],arr[j]
+                swap(arr,j,j+1)
                 swapped= True
             print(arr)
         if swapped== False:
@@ -26,7 +29,8 @@ def selectionSort(arr):
                 index =j
                 min = arr[j]
         if i != index:
-            arr[i],arr[index] = arr[index],arr[i]
+            swap(arr,i,index)
+
         print(arr)
 
 def test_selectionSort():
@@ -68,16 +72,76 @@ def mergeSort(arr):
 
 def test_mergeSort():
     randArr = [random.randint(-10, 10) for _ in range(10)]
-    print(randArr)
+    print( randArr)
     mergeSort(randArr)
 
+def partition(arr,l,r):
+    pivot = arr[(l+r)//2]
+    while l<=r:
+        while arr[l]<pivot: l+=1 #find element on the left that shold be on the right
+        while arr[r] > pivot: r -= 1
+        if l<=r:
+            swap(arr,l,r)
+            l+=1
+            r -= 1
+    return l
+
+    
 
 
+def quickSort(arr,l,r):
+   # print(arr[l:r])
+    idx = partition(arr,l,r)
+    if l< idx -1: #sort left part
+        quickSort(arr,l,idx-1)
+    if idx < r: #sort right part
+        quickSort(arr,idx,r)  
 
+def test_quickSort():
+    randArr = [random.randint(-10, 10) for _ in range(10)]
+    print( randArr)
+    quickSort(randArr,0,len(randArr)-1)
+    print(randArr)
+
+def binarySerch(arr,num):
+    left = 0
+    right =len(arr) -1
+    while left <= right:
+        mid = (left +right)//2
+        midVal = arr[midVal]
+        if midVal>num:
+            right = mid -1
+        elif midVal<num:
+            left = mid +1
+        else:
+            return mid
+    return None
+# 10.1 Sorted Merge: You are given two sorted arrays, A and B, 
+# where A has a large enough buffer at the
+# end to hold B. Write a method to merge B into A in sorted order.
+
+#for the pyhon code we will that A's buffer is full of None
+def sortedMerge(a,b):
+    lastA =len(a)-1
+    while a[lastA] == None:
+        lastA -=1
+    lastComb = lastA + len(b)
+    lastB =len(b)-1
+    while lastB >=0:
+        if b[lastB] > a[lastA]:
+            a[lastComb] = b[lastB]
+            lastB -=1 
+        else:
+            a[lastComb] = a[lastA]
+            lastA -=1
+        lastComb -=1
+    return a
+            
 def main():
-    pass
+    test_quickSort()
     #test_mergeSort()
     #test_selectionSort()
     #test_bubbleSort()
+    pass
 if __name__ == "__main__":
     main()

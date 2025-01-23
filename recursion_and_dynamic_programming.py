@@ -81,11 +81,20 @@ def test_recursiveMultiply():
 # (2) A disk is slid off the top of one tower onto another tower.
 # (3) A disk cannot be placed on top of a smaller disk.
 # Write a program to move the disks from the first tower to the last using Stacks
-    
+
+def hanoiTowers(n,originTower, destTower,BufferTower): 
+    if n ==0:
+        return
+    hanoiTowers(n-1,originTower,BufferTower,destTower )
+    print("move disk: ",n, "from : ",originTower," to: ",destTower)
+    hanoiTowers(n-1,BufferTower,destTower,originTower )
+def test_hanoiTowers():
+    hanoiTowers(3 ,'A', 'C', 'B')
 
 
 
 def main():
-    test_recursiveMultiply()
+    test_hanoiTowers()
+    #test_recursiveMultiply()
 if __name__ == "__main__":
     main()
