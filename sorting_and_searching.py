@@ -125,8 +125,9 @@ def sortedMerge(a,b):
     lastA =len(a)-1
     while a[lastA] == None:
         lastA -=1
-    lastComb = lastA + len(b)
     lastB =len(b)-1
+    lastComb = lastA + lastB(b)
+    
     while lastB >=0:
         if b[lastB] > a[lastA]:
             a[lastComb] = b[lastB]
