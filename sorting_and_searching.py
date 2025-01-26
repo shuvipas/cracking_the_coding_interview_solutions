@@ -75,6 +75,8 @@ def test_mergeSort():
     print( randArr)
     mergeSort(randArr)
 
+
+
 def partition(arr,l,r):
     pivot = arr[(l+r)//2]
     while l<=r:
@@ -85,9 +87,6 @@ def partition(arr,l,r):
             l+=1
             r -= 1
     return l
-
-    
-
 
 def quickSort(arr,l,r):
    # print(arr[l:r])
@@ -137,6 +136,29 @@ def sortedMerge(a,b):
             lastA -=1
         lastComb -=1
     return a
+# 10.2 Group Anagrams: Write a method to sort an array of strings so that all the anagrams are next to
+# each other.
+def anagramGroup(arr):
+    anagrams ={}
+    for s in arr:
+        key = "".join(sorted(s))
+        if key in anagrams:
+            anagrams[key].append(s)
+        else: 
+            anagrams[key] =[s]
+    i = 0
+    for val in anagrams.values():
+        arr[i] = val
+        i+=1
+    return arr
+
+# 10.3 Search in Rotated Array: Given a sorted array of n integers that has been rotated an unknown
+# number of times, write code to find an element in the array. You may assume that the array was
+# originally sorted in increasing order.
+# EXAMPLE
+# InputfindSin {15, 16, 19, 20, 25, 1, 3,4,5,7,10, 14}
+# Output 8 (the index of 5 in the array)
+
             
 def main():
     test_quickSort()
