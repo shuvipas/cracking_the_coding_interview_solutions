@@ -159,9 +159,45 @@ def anagramGroup(arr):
 # InputfindSin {15, 16, 19, 20, 25, 1, 3,4,5,7,10, 14}
 # Output 8 (the index of 5 in the array)
 
-            
+def rotatedSearch(arr,k,left, right):
+
+    mid = (right +left) //2
+    if arr[mid] ==k:
+        return mid
+    if left >right:
+        return -1
+    if arr[left] <= arr[mid]:
+        if k >= arr[left] and k<arr[mid]:
+            return rotatedSearch(arr,k,left,mid - 1)
+        else:
+            return rotatedSearch(arr,k,mid+1,right)
+    elif arr[mid] < arr[right]:
+        if k > arr[mid] and k<=arr[right]:
+            return rotatedSearch(arr,k,mid + 1,right)
+        else:
+            return rotatedSearch(arr,k,left , mid-1)
+    else:
+        res = rotatedSearch(arr,k,left,mid - 1)
+        if res != -1:
+            return res
+        else:
+             return rotatedSearch(arr,k,mid + 1,right)
+
+def test_rotatedSearch():
+    print("###test_rotatedSearch###")
+    arr = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14]
+    assert(rotatedSearch(arr,3,0,len(arr)-1)== 6)
+    assert(rotatedSearch(arr,5,0,len(arr)-1)== 8)
+    assert(rotatedSearch(arr,19,0,len(arr)-1)== 2) 
+    assert(rotatedSearch(arr,1,0,len(arr)-1)== 5) 
+    arr =[0, 1, 2, 3, 4]
+    assert(rotatedSearch(arr,4,0,len(arr)-1)==4)
+    arr = [2,2,2,3,4,5,2,2]
+    assert(rotatedSearch(arr,4,0,len(arr)-1)==4)
+             
 def main():
-    test_quickSort()
+    test_rotatedSearch()
+    #test_quickSort()
     #test_mergeSort()
     #test_selectionSort()
     #test_bubbleSort()
