@@ -194,7 +194,37 @@ def test_rotatedSearch():
     assert(rotatedSearch(arr,4,0,len(arr)-1)==4)
     arr = [2,2,2,3,4,5,2,2]
     assert(rotatedSearch(arr,4,0,len(arr)-1)==4)
-             
+
+# 10.4 Sorted Search, No Size: You are given an array-like data structure Listy which lacks a si ze
+# method. It does, however, have an elementAt(i) method that returns the element at index i in
+# 0(1) time. If i is beyond the bounds of the data structure, it returns - 1. (For this reason, the data
+# structure only supports positive integers.) Given a Listy which contains sorted, positive integers,
+# find the index at which an element x occurs. If x occurs multiple times, you may return any index
+
+def noSizeSearch(listy):
+    right = elementAt(0)
+    while elementAt(right) !=-1 and elementAt(right)<x :
+        right *=2
+    left =0
+    while left <= right:
+        mid =(left +right)//2
+        if elementAt(mid) ==x:
+            return mid
+        if elementAt(mid) >x or elementAt(mid) == -1:
+            right = mid -1
+        else:
+            left = mid +1
+    return -1
+
+# 10.5 Sparse Search: Given a sorted array of strings that is interspersed with empty strings, write a
+# method to find the location of a given string.
+# EXAMPLE
+# Input: ball, ["at", "", "", "", "ball", "" , "" ,"car", "", "", "dad", "", ""]
+# Output: 4
+
+    
+
+
 def main():
     test_rotatedSearch()
     #test_quickSort()
