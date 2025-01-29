@@ -220,7 +220,7 @@ def noSizeSearch(listy):
 # method to find the location of a given string.
 # EXAMPLE
 # Input: ball, ["at", "", "", "", "ball", "" , "" ,"car", "", "", "dad", "", ""]
-# Output: 4
+# Output: 4 
 
     
 
